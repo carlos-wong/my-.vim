@@ -172,9 +172,7 @@ set mouse=a
 let mapleader = ","
 let g:mapleader = ","
 
-
 "Fast saving
-"nmap <leader>w :w!<cr>
 "nmap <leader>f :find<cr>
 
 "Fast reloading of the .vimrc
@@ -209,11 +207,11 @@ colorscheme darkblue2
 "endif
 
 "Some nice mapping to switch syntax (useful if one mixes different languages in one file)
-map <leader>1 :set syntax=cheetah<cr>
-map <leader>2 :set syntax=xhtml<cr>
-map <leader>3 :set syntax=python<cr>
-map <leader>4 :set ft=javascript<cr>
-map <leader>$ :syntax sync fromstart<cr>
+"map <leader>1 :set syntax=cheetah<cr>
+"map <leader>2 :set syntax=xhtml<cr>
+"map <leader>3 :set syntax=python<cr>
+"map <leader>4 :set ft=javascript<cr>
+"map <leader>$ :syntax sync fromstart<cr>
 
 autocmd BufEnter * :syntax sync fromstart
 
@@ -352,10 +350,10 @@ map <C-l> <C-W>l
 "map <left> :bp<cr>
 
 "Tab configuration
-map <leader>tn :tabnew %<cr>
-map <leader>te :tabedit
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove
+"map <leader>tn :tabnew %<cr>
+"map <leader>te :tabedit
+"map <leader>tc :tabclose<cr>
+"map <leader>tm :tabmove
 try
   set switchbuf=usetab
   set stal=2
@@ -372,7 +370,7 @@ imap <D-0> <esc>0i
 " General Autocommands
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Switch to current dir
-map <leader>cd :cd %:p:h<cr>
+"map <leader>cd :cd %:p:h<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -487,17 +485,14 @@ cnoremap <C-K>    <C-U>
 " Buffer realted
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Fast open a buffer by search for a name
-map <c-q> :sb
+"map <c-q> :sb
 
-"Open a dummy buffer for paste
-map <leader>q :e ~/buffer<cr>
 
 "Restore cursor to file position in previous editing session
 set viminfo='10,\"100,:20,%,n~/.viminfo
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
 
 " Buffer - reverse everything ... :)
-map <F9> ggVGg?
 
 " Don't close window, when deleting a buffer
 command! Bclose call <SID>BufcloseCloseIt()
@@ -545,8 +540,8 @@ set fdl=0
 set expandtab
 set shiftwidth=2
 
-map <leader>t2 :set shiftwidth=2<cr>
-map <leader>t4 :set shiftwidth=4<cr>
+"map <leader>t2 :set shiftwidth=2<cr>
+"map <leader>t4 :set shiftwidth=4<cr>
 au FileType html,python,vim,javascript setl shiftwidth=2
 au FileType html,python,vim,javascript setl tabstop=2
 au FileType java setl shiftwidth=4
@@ -575,10 +570,10 @@ set tw=500
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Spell checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <leader>sn ]s
-map <leader>sp [s
-map <leader>sa zg
-map <leader>s? z=
+"map <leader>sn ]s
+"map <leader>sp [s
+"map <leader>sa zg
+"map <leader>s? z=
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -593,7 +588,7 @@ map <leader>s? z=
    """"""""""""""""""""""""""""""
    " Yank Ring
    """"""""""""""""""""""""""""""
-   map <leader>y :YRShow<cr>
+   "map <leader>y :YRShow<cr>
 
    """"""""""""""""""""""""""""""
    " File explorer
@@ -806,7 +801,7 @@ map <leader>s? z=
    """"""""""""""""""""""""""""""
    " C mappings
    """""""""""""""""""""""""""""""
-   autocmd FileType c map <buffer> <leader><space> :w<cr>:!gcc %<cr>
+   "autocmd FileType c map <buffer> <leader><space> :w<cr>:!gcc %<cr>
 
 
    """""""""""""""""""""""""""""""
@@ -823,12 +818,7 @@ map <leader>s? z=
    autocmd BufNewFile,BufRead *.scm vnoremap <C-t> <esc>`>a)<esc>`<i(pretty-print <esc>
 
 
-   """"""""""""""""""""""""""""""
-   " SVN section
-   """""""""""""""""""""""""""""""
-   map <F8> :new<CR>:read !svn diff<CR>:set syntax=diff buftype=nofile<CR>gg
-
-
+   
 """"""""""""""""""""""""""""""
 " Snippets
 """""""""""""""""""""""""""""""
@@ -894,13 +884,13 @@ map <c-u> <c-l><c-j>:q<cr>:botright cw 10<cr>
 " MISC
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Remove the Windows ^M
-noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
+"noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
 "Paste toggle - when pasting something in, don't indent.
-set pastetoggle=<F3>
+"set pastetoggle=<F3>
 
 "Remove indenting on empty lines
-map <F2> :%s/\s*$//g<cr>:noh<cr>''
+"map <F2> :%s/\s*$//g<cr>:noh<cr>''
 
 "Super paste
 inoremap <C-v> <esc>:set paste<cr>mui<C-R>+<esc>mv'uV'v=:set nopaste<cr>
@@ -970,7 +960,13 @@ nmap F :call Mydict()<CR>
 "endfunc
 "map <C-F11> :call CompileRun_kernel()<CR> 
 "
-map <F5> :make<CR>
-map <F2> :Tlist<CR>
-map <C-F11> :make uImage<CR>
-map <C-E> :Explore<CR>
+autocmd FileType c nmap <leader>t :Tlist<cr>
+autocmd FileType c nmap <leader>mu :make uImage<cr>
+autocmd FileType c nmap <leader>m :make<cr>
+nmap <leader>e :Explore<cr>
+nmap <leader>q :q<cr>
+nmap <leader>o :only<cr>
+nmap <leader>c :close<cr>
+nmap <leader>l :ls<cr>
+nmap <leader>w :w!<cr>
+nmap <leader>b :b 
