@@ -27,6 +27,7 @@ if !exists('g:git_no_map_default') || !g:git_no_map_default
     nnoremap <Leader>gD :GitDiff --cached<Enter>
     nnoremap <Leader>gs :GitStatus<Enter>
     nnoremap <Leader>gl :GitLog<Enter>
+    nnoremap <Leader>gla :GitLogAll<Enter>
     nnoremap <Leader>ga :GitAdd<Enter>
     nnoremap <Leader>gA :GitAdd <cfile><Enter>
     nnoremap <Leader>gc :GitCommit<Enter>
@@ -122,11 +123,18 @@ function! s:RefreshGitStatus()
 endfunction
 
 " Show Log.
+function! GitLogAll(args)
+    let git_output = s:SystemGit('log --all --decorate --graph' . a:args . ' -- ' . s:Expand('%'))
+    call <SID>OpenGitBuffer(git_output)
+    setlocal filetype=git-log
+endfunction
+
 function! GitLog(args)
     let git_output = s:SystemGit('log ' . a:args . ' -- ' . s:Expand('%'))
     call <SID>OpenGitBuffer(git_output)
     setlocal filetype=git-log
 endfunction
+
 
 " Add file to index.
 function! GitAdd(expr)
@@ -178,6 +186,13 @@ function! GitPush(args)
     endif
     execute '!' g:git_bin 'push' args
 endfunction
+
+" Fetch.
+function! GitFetch()
+    call GitDoCommand('fetch ')
+    " Wanna see progress...
+endfunction
+
 
 " Pull.
 function! GitPull(args)
@@ -363,6 +378,7 @@ command! -nargs=* -complete=customlist,ListGitCommits GitDiff     call GitDiff(<
 command!          GitStatus           call GitStatus()
 command! -nargs=? GitAdd              call GitAdd(<q-args>)
 command! -nargs=* GitLog              call GitLog(<q-args>)
+command! -nargs=* GitLogAll              call GitLogAll(<q-args>)
 command! -nargs=* GitCommit           call GitCommit(<q-args>)
 command! -nargs=1 GitCatFile          call GitCatFile(<q-args>)
 command! -nargs=? GitBlame            call GitBlame(<q-args>)
@@ -372,3 +388,4 @@ command!          GitVimDiffMergeDone call GitVimDiffMergeDone()
 command! -nargs=* GitPull             call GitPull(<q-args>)
 command!          GitPullRebase       call GitPull('--rebase')
 command! -nargs=* GitPush             call GitPush(<q-args>)
+command! -nargs=* GitFetch            call GitFetch()
