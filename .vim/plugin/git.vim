@@ -123,7 +123,7 @@ endfunction
 
 " Show Log.
 function! GitLog(args)
-    let git_output = s:SystemGit('log --all --decorate --graph' . a:args . ' -- ' . s:Expand('%'))
+    let git_output = s:SystemGit('log ' . a:args . ' -- ' . s:Expand('%'))
     call <SID>OpenGitBuffer(git_output)
     setlocal filetype=git-log
 endfunction
