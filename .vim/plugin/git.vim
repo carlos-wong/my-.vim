@@ -31,6 +31,7 @@ if !exists('g:git_no_map_default') || !g:git_no_map_default
     nnoremap <Leader>gA :GitAdd <cfile><Enter>
     nnoremap <Leader>gc :GitCommit<Enter>
     nnoremap <Leader>gp :GitPullRebase<Enter>
+    nnoremap <Leader>gf :GitFetch<Enter>
     nnoremap <Leader>gu :GitPush<Enter>
     nnoremap <Leader>gb :GitBlame<Enter>
 endif
@@ -122,7 +123,7 @@ endfunction
 
 " Show Log.
 function! GitLog(args)
-    let git_output = s:SystemGit('log ' . a:args . ' -- ' . s:Expand('%'))
+    let git_output = s:SystemGit('log --all --decorate --graph' . a:args . ' -- ' . s:Expand('%'))
     call <SID>OpenGitBuffer(git_output)
     setlocal filetype=git-log
 endfunction
