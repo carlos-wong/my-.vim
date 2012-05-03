@@ -971,5 +971,6 @@ nmap F :call Mydict()<CR>
 "map <C-F11> :call CompileRun_kernel()<CR> 
 "
 map <F5> :make<CR>
+map <F2> :Tlist<CR>
 map <C-F11> :make uImage<CR>
-
+map <C-E> :Explore<CR>
