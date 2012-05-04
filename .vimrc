@@ -971,3 +971,9 @@ nmap <leader>c :close<cr>
 nmap <leader>l :ls<cr>
 nmap <leader>w :w!<cr>
 nmap <leader>b :b 
+nmap <leader>cn :cn<cr>
+nmap <leader>cp :cp<cr>
+nmap <leader>tn :tn<cr>
+nmap <leader>tp :tp<cr>
+nmap <leader>ts :ts<cr>
+
