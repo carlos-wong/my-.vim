@@ -15,7 +15,7 @@ if v:progname =~? "evim"
 endif
 
 "set cursorline
-set nu
+"set nu
 set hlsearch
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -213,7 +213,7 @@ colorscheme darkblue2
 "map <leader>4 :set ft=javascript<cr>
 "map <leader>$ :syntax sync fromstart<cr>
 
-autocmd BufEnter * :syntax sync fromstart
+"autocmd BufEnter * :syntax sync fromstart
 
 "Highlight current
 if has("gui_running")
@@ -253,8 +253,6 @@ set ruler
 "The commandbar is 2 high
 set cmdheight=2
 
-"Show line number
-set nu
 
 "Do not redraw, when running macros.. lazyredraw
 set lz
@@ -539,7 +537,7 @@ set fdl=0
 " Text options
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set expandtab
-set shiftwidth=2
+set shiftwidth=4
 
 "map <leader>t2 :set shiftwidth=2<cr>
 "map <leader>t4 :set shiftwidth=4<cr>
