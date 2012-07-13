@@ -4,7 +4,8 @@
 [core]
 	editor = vim
 [alias]
-	logall = log --decorate --all --graph
+        logall = log --decorate --all --graph
+        addall = add .
 [color]
 	ui = true
 [diff]
