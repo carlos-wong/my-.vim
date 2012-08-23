@@ -962,6 +962,8 @@ nmap F :call Mydict()<CR>
 autocmd FileType c nmap <leader>t :Tlist<cr>
 autocmd FileType c nmap <leader>mu :make uImage<cr>
 autocmd FileType c nmap <leader>m :make<cr>
+autocmd FileType cpp nmap <leader>m :make<cr>
+
 nmap <leader>e :Explore<cr>
 nmap <leader>q :q<cr>
 nmap <leader>o :only<cr>
