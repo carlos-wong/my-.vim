@@ -197,7 +197,7 @@ syntax on
 "elseif MySys() == "linux"
 "  set gfn=Monospace\ 11
 "endif
-colorscheme darkblue2
+colorscheme darkblue
 "if has("gui_running")
 "  set guioptions-=T
 "  let psc_style='cool'
