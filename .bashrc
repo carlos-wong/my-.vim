@@ -102,5 +102,6 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-export PATH=/opt/mipsel-linux-uclibc/usr/bin/:$PATH
-export PATH=/home/carlos/jdk-6.26/jdk1.6.0_26/bin/:$PATH
+export LANG="en_US.UTF-8"
+
+
